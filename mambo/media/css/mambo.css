@@ -1,0 +1,56 @@
+ /* -- Ayudas --
+    * http://www.colorzilla.com/
+    * */
+	#header{
+   		margin-top:15px;
+   		margin-bottom:15px;
+	}
+	#body{
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+	}
+	.GChead-container{
+		background: #F5F5F5;
+		border-bottom: 1px groove buttonhighlight;
+	}
+
+	.GCnavbar-container{
+		height: 100%;	
+		margin-bottom: 0;
+		padding-top:15px;
+	}
+	.GCfoot-container{
+		background: #F5F5F5;
+		border-bottom: 1px groove cornflowerblue;
+   		height:68px;
+	}
+	.GCfooter{
+		background: #F5F5F5;
+		border-top: 2px groove buttonhighlight;
+	}
+   .GChero-unit {
+	  	border-radius: 0 0 0 0;
+		background: rgb(109,179,242); /* Old browsers */
+		background: -moz-linear-gradient(-45deg,  rgba(109,179,242,1) 0%, rgba(84,163,238,1) 50%, rgba(54,144,240,1) 65%, rgba(30,105,222,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(109,179,242,1)), color-stop(50%,rgba(84,163,238,1)), color-stop(65%,rgba(54,144,240,1)), color-stop(100%,rgba(30,105,222,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(-45deg,  rgba(109,179,242,1) 0%,rgba(84,163,238,1) 50%,rgba(54,144,240,1) 65%,rgba(30,105,222,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(-45deg,  rgba(109,179,242,1) 0%,rgba(84,163,238,1) 50%,rgba(54,144,240,1) 65%,rgba(30,105,222,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(-45deg,  rgba(109,179,242,1) 0%,rgba(84,163,238,1) 50%,rgba(54,144,240,1) 65%,rgba(30,105,222,1) 100%); /* IE10+ */
+		background: linear-gradient(135deg,  rgba(109,179,242,1) 0%,rgba(84,163,238,1) 50%,rgba(54,144,240,1) 65%,rgba(30,105,222,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	    text-align: left;
+	    margin-bottom: 0 ;
+  	}
+   	.GChero-unit h1 {
+ 	   line-height: 1;
+ 	 }
+	.GCnav li a {
+	    text-transform: uppercase;
+	}
+  	.GClogin {
+		text-align: end;
+  	}
+  	.GCheader-menu{
+  		margin: 5px;
+  	}
+ 

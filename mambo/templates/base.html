@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html lang="es-ES">
+	{% load staticfiles %}
+	<head>
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="robots" content="index, follow, archive"/>
+        <title>Viaja con ...</title>  
+		<meta name="keywords" content="Spanish lessons Vancouver, Spanish Classes Vancouver, Spanish for travellers, Learn Spanish in Vancouver, Spanish courses Vancouver, spanish programs, intensive Spanish, learn to speak spanish, Spanish language lessons, Spanish language schools"/>
+        <meta name="description" content="Spanish lessons in Vancouver. Native teachers school where you can improve your spanish skills. Hipancouver wants to be your spanish school in Vancouver"/>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<!--		<link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">-->  
+		<link href="{% static 'css/mambo.css' %}" rel="stylesheet">
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+	</head>
+	<body>
+		<!-- header encabezado -->
+			<div class="container-fluid GChead-container">
+				<header id="header" class="container">
+			
+					<a class="pull-left" href="http://www.thinslices.com">
+						<img alt="Thinslices" src="http://www.thinslices.com/wp-content/themes/thinslices2/assets/img/logo_standard.png">
+					</a>
+					<div class="GCnavbar-container">
+						<nav class="navbar pull-right">
+						  	<ul class="nav GCnav">
+									 {%if path == '/inicio/' %} 	 	<li  class="active" >
+									 {% else %}						 	<li>
+									 {% endif %}						<a href="/inicio/">inicio</a></li>
+									  <li><a href="/search/">buscador</a></li>
+									{%if not user.is_authenticated %}
+									  <li><a href="/register/">registro</a></li>
+									{% else %}
+									  <li><a href="/perfil/">perfil</a></li>
+									{% endif %}
+									  <li><a href="/contact/">contacto</a></li>
+							</ul>
+						</nav>
+					</div>
+				</header> <!-- cierre del container -->
+			</div>
+
+		<!-- Cuerpo encabezado -->
+			<div class="GChero-unit hero-unit">
+				<div class="container">
+					<header>
+						<h1>Viaja con ...</h1>
+					</header>
+					<div class="GClogin">
+						{%if not user.is_authenticated %}
+							<form action="/login/" method="post" class="form-inline">
+							{% csrf_token %}
+								<label for="id_username">Usuario:</label> <input id="username" type="text" name="username" maxlength="30" class="input-small" />
+								<label for="id_password">Contraseña:</label> <input id="password" name="password" type="password" class="input-small"/>
+								<button  type="submit" value="Log in"  class="btn" > Sign in</button> 
+							</form>
+						{% else %}
+							<p> Bienvenido {{ user }} !! </p>
+							<a href="/logout/">logout</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+
+		<!-- pie encabezado -->
+			<div class="container-fluid GCfoot-container">
+				<div class="container">
+				</div>
+			</div>
+			
+			<div id="body" class="container">
+				{% block content %}
+
+				{% endblock %}
+			</div>	
+			<div class="container-fluid GCfooter navbar-fixed-bottom ">
+				{% block footer %}
+				<p>Thanks for visiting my site.</p>
+				{% endblock %}
+			</div>
+	</body>
+	<!-- El javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap-transition.js"></script>
+    <script src="../assets/js/bootstrap-alert.js"></script>
+    <script src="../assets/js/bootstrap-modal.js"></script>
+    <script src="../assets/js/bootstrap-dropdown.js"></script>
+    <script src="../assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../assets/js/bootstrap-tab.js"></script>
+    <script src="../assets/js/bootstrap-tooltip.js"></script>
+    <script src="../assets/js/bootstrap-popover.js"></script>
+    <script src="../assets/js/bootstrap-button.js"></script>
+    <script src="../assets/js/bootstrap-collapse.js"></script>
+    <script src="../assets/js/bootstrap-carousel.js"></script>
+    <script src="../assets/js/bootstrap-typeahead.js"></script>
+</html>

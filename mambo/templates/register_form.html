@@ -1,0 +1,57 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+			<div class="heading">
+				<h3 class="">Unete a nuestro club.</h3>
+			</div>
+			<hr>			
+			<form action="/register/" method="post" class="form-horizontal">{% csrf_token %}
+			
+				{% for field in formRegister %}
+				
+					<div class="control-group {%if field.errors %} error {% endif %}">
+					
+							<div class="control-label">
+								{{ field.label_tag }}  
+							</div>
+				
+				<!-- Seleccion del genero -->
+						{%if field.name = 'genero' %}
+							<div class="controls inline">
+								{%for genero in field %}
+								<div class="radio inline">
+									{{ genero }}
+								</div>
+								{% endfor %}
+									<span class="help-inline">
+										{% for error in field.errors %}
+											{{ error }} 
+										{% endfor %}
+									</span>
+							</div>
+				<!-- Resto de campos -->
+						{%else%}
+								<div class="controls">
+									{{ field }}
+									<span class="help-inline">
+										{% for error in field.errors %}
+											{{ error }} 
+										{% endfor %}
+									</span>
+								</div>
+						{%endif%}
+						
+					</div>
+					
+				{% endfor %}
+				<!-- Botón para el registro -->
+				 <div class="control-group">
+					<div class="controls">
+						<input class="btn btn-danger" type="reset" value=" Limpiar ">
+						<input type="submit" value="Registrate" class="btn btn-success" />				
+					</div>
+				</div>
+				
+			</form>
+					
+{% endblock %}		
+<p>Dear {{ person_name }}</p>
