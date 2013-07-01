@@ -26,7 +26,7 @@ def login_view(request):
                 if user is not None:
                         if user.is_active:
                             profiles = UserProfile.objects.all()
-                            print "nombre" + str(profiles)
+                            
                             login(request, user)
                             return render_to_response('principal.html', RequestContext(request))
                         else:
