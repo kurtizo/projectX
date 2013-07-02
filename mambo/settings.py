@@ -3,11 +3,13 @@ import os.path
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-#ADMINS = (
+ADMINS = (
     # ('Your Name', 'your_email@example.com'),
-#)
+)
 
-#MANAGERS = ADMINS
+MANAGERS = ADMINS
+
+AUTH_PROFILE_MODULE = "account.UserProfile"
 
 DATABASES = {
     'default': {

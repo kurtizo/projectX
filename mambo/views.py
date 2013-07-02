@@ -1,9 +1,9 @@
-# -*- coding: cp1252 -*-
+#encoding:utf-8
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
-from account.modelSql import UserProfile
+from account.model import UserProfile
 from form.codeForm import LoginForm, RegisterForm
 
 
