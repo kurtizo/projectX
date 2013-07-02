@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, include
+from django.conf.urls import patterns, include
 from django.contrib import admin
 from mambo.views import index_view, login_view, logout_view, search_view, contact_view, register_view, perfil_view
 

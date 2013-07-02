@@ -25,9 +25,10 @@ def login_view(request):
                 user = authenticate(username=username, password=password)
                 if user is not None:
                         if user.is_active:
-                            profiles = UserProfile.objects.all()
-                            print profiles
                             login(request, user)
+                            print user
+                            profiles = request.id.get_profile()
+                            print profiles
                             return render_to_response('principal.html', RequestContext(request))
                         else:
                                 print "Usuario nefasto"
