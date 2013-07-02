@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
-from account.models import UserProfile
+from account.modelSql import UserProfile
 from form.codeForm import LoginForm, RegisterForm
 
 
@@ -26,7 +26,7 @@ def login_view(request):
                 if user is not None:
                         if user.is_active:
                             profiles = UserProfile.objects.all()
-                            
+                            print profiles
                             login(request, user)
                             return render_to_response('principal.html', RequestContext(request))
                         else:
