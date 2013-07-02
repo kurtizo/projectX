@@ -3,15 +3,15 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
-from account.model import UserProfile
+from account.models import UserProfile
 from form.codeForm import LoginForm, RegisterForm
 
 
-#Página principal
+#Pï¿½gina principal
 def index_view(request):
     return render_to_response('principal.html', RequestContext(request))
 
-#Cerramos la sesión
+#Cerramos la sesiï¿½n
 def logout_view(request):
     logout(request)
     return render_to_response('principal.html', RequestContext(request))
@@ -64,15 +64,15 @@ def register_view(request):
 
         return render_to_response('register_form.html',  {'formRegister': formRegister,} ,RequestContext(request))
  
-#Vista del menú de búsqueda
+#Vista del menï¿½ de bï¿½squeda
 def search_view(request):
         return render_to_response('search_form.html',  RequestContext(request))
 
-#Vista del menú de contacto
+#Vista del menï¿½ de contacto
 def contact_view(request):
         return render_to_response('contacto.html',  RequestContext(request))
 
-#Vista del menú de perfil
+#Vista del menï¿½ de perfil
 def perfil_view(request):
         return render_to_response('perfil.html',  RequestContext(request))
 
