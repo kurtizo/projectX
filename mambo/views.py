@@ -1,6 +1,6 @@
 #encoding:utf-8
 from django.template import RequestContext
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
 from account.models import UserProfile
@@ -26,9 +26,12 @@ def login_view(request):
                 if user is not None:
                         if user.is_active:
                             login(request, user)
+                            print "Vamos"
                             print user
-                            profiles = request.id.get_profile()
-                            print profiles
+                            profiles = get_user_model()
+                            print "casa"
+                            print dir(profiles)
+                            print "coso"
                             return render_to_response('principal.html', RequestContext(request))
                         else:
                                 print "Usuario nefasto"

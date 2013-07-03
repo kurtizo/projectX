@@ -9,7 +9,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-AUTH_PROFILE_MODULE = "account.UserProfile"
+AUTH_USER_MODEL = "account.UserProfile"
 
 DATABASES = {
     'default': {
