@@ -74,7 +74,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         objects = UserProfileManager()
         
         def get_full_name(self):
-            return "{0} loves {1}".format(self.apellidos, self.nombre)
+            return "Get_full_name: " + self.apellidos + self.nombre
         
         def get_short_name(self):
             return self.email

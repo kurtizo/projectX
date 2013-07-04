@@ -7,31 +7,34 @@ from account.models import UserProfile
 from form.codeForm import LoginForm, RegisterForm
 
 
-#P�gina principal
+#Página principal
 def index_view(request):
     return render_to_response('principal.html', RequestContext(request))
 
-#Cerramos la sesi�n
+# Vista correspondiente al logout
 def logout_view(request):
     logout(request)
     return render_to_response('principal.html', RequestContext(request))
 
+# Vista correspondiente al login
 def login_view(request):
         if request.method == 'POST':
+            # Obtenemos del formulario de login los datos para la autentificación
                 formLogin = LoginForm(request.POST)
                 username = request.POST.get('username')
                 password = request.POST.get('password')
-            #Autenticamos al usuario con las lib de django
+            # Autenticamos al usuario con las lib de django
                 user = authenticate(username=username, password=password)
                 if user is not None:
                         if user.is_active:
                             login(request, user)
-                            print "Vamos"
-                            print user
-                            profiles = get_user_model()
-                            print "casa"
-                            print dir(profiles)
-                            print "coso"
+                            profile = UserProfile(get_user_model())
+                            request.profile = profile
+                            print dir(profile)
+                            print "Apellidos"
+                            print profile.object.get(username=user)
+                            print profile.get_full_name()
+                            # Recuperamos el perfil y lo insertamos como parte de la request
                             return render_to_response('principal.html', RequestContext(request))
                         else:
                                 print "Usuario nefasto"
@@ -40,6 +43,10 @@ def login_view(request):
             formLogin = LoginForm()    
         return render_to_response('login_activate.html', {'formLogin': formLogin,} ,RequestContext(request))
 
+#########################################################################################################
+#    Hay que realizar modificaciones sobre en formulario de creacion de usuarios                        #
+#                                                                                                       #
+#########################################################################################################
 #Vista del registro
 def register_view(request):
 
@@ -52,14 +59,15 @@ def register_view(request):
                         tipoDoc         = formRegister.cleaned_data['tipo_documento']
                         numeroDoc       = formRegister.cleaned_data['numero_documento']
                         user            = formRegister.cleaned_data['nombre_usuario']
-                        password1       = formRegister.cleaned_data['password']
+                        password        = formRegister.cleaned_data['password']
                         email           = formRegister.cleaned_data['email']
+                        nacimiento      = formRegister.cleaned_data['nacimiento']
                         #Se crea el usuario
-                        User.objects.create_user(user, email, password1)
+                        User.objects.create_user(user, password, genero, nombre, apellidos, tipoDoc, numeroDoc, nacimiento, email)
                         #Se crea el perfil del usuario
-                        UserProfile.objects.create(genero=genero, nombre=nombre, apellidos=apellidos,
-                                                   tipoDoc=tipoDoc, numeroDoc=numeroDoc, user=user,
-                                                   email=email )
+                        # UserProfile.objects.create(genero=genero, nombre=nombre, apellidos=apellidos,
+                        #                            tipoDoc=tipoDoc, numeroDoc=numeroDoc, user=user,
+                        #                            email=email )
                         
                         return render_to_response('principal.html', RequestContext(request))
                         
@@ -68,15 +76,20 @@ def register_view(request):
 
         return render_to_response('register_form.html',  {'formRegister': formRegister,} ,RequestContext(request))
  
-#Vista del men� de b�squeda
+#Vista del menú de búsqueda
 def search_view(request):
         return render_to_response('search_form.html',  RequestContext(request))
 
-#Vista del men� de contacto
+#Vista del menú de contacto
 def contact_view(request):
         return render_to_response('contacto.html',  RequestContext(request))
 
-#Vista del men� de perfil
+#Vista del menú de perfil
 def perfil_view(request):
+        profile = UserProfile(get_user_model())
+        request.profile = profile
+        print dir(profile._meta.get_field('apellidos'))
+        print "Apellidos"
         return render_to_response('perfil.html',  RequestContext(request))
+
 
