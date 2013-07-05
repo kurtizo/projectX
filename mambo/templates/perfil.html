@@ -4,22 +4,31 @@
 				<h1>{{user}}</h1>
 			</header>
 			<hr>			
-			<nav>
-				<p>
-					<a href="/">Home</a>
-				</p>
-				<p>
-					<a href="/contact">Contact</a>
-				</p>
-				<p>
-					{{ aux1 }}
-				</p>
-			</nav>
+			<ul>				
+				<li>
 
-			<div>
-
-			</div>
-
+					Nombre: {{ user.nombre }}
+				</li>
+				<li>
+					Apellidos: {{ user.apellidos }}
+				</li>
+				<li>
+					Fecha de nacimiento: {{ user.nacimiento }}
+				</li>
+				<li>
+					Género: {{ user.genero }}
+				</li>
+				<li>
+					{{ user.tipoDoc }}: {{ user.numeroDoc }}
+				</li>
+				<li>
+					email: {{ user.email}}
+				</li>
+				<li>
+					<a href="#"> modificar </a>
+				</li>
+			</ul>
+			
 			<footer>
 				<p>
 					&copy; Copyright  by gecortizo

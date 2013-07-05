@@ -30,10 +30,6 @@ def login_view(request):
                             login(request, user)
                             profile = UserProfile(get_user_model())
                             request.profile = profile
-                            print dir(profile)
-                            print "Apellidos"
-                            print profile.object.get(username=user)
-                            print profile.get_full_name()
                             # Recuperamos el perfil y lo insertamos como parte de la request
                             return render_to_response('principal.html', RequestContext(request))
                         else:
@@ -76,20 +72,20 @@ def register_view(request):
 
         return render_to_response('register_form.html',  {'formRegister': formRegister,} ,RequestContext(request))
  
-#Vista del menú de búsqueda
+#Vista de búsqueda
 def search_view(request):
         return render_to_response('search_form.html',  RequestContext(request))
 
-#Vista del menú de contacto
+#Vista de contacto
 def contact_view(request):
         return render_to_response('contacto.html',  RequestContext(request))
 
-#Vista del menú de perfil
+#Vista de perfil
 def perfil_view(request):
-        profile = UserProfile(get_user_model())
-        request.profile = profile
-        print dir(profile._meta.get_field('apellidos'))
-        print "Apellidos"
         return render_to_response('perfil.html',  RequestContext(request))
 
+#Vista de publicador
+def publica_view(request):
+        return render_to_response('publica.html',  RequestContext(request))
 
+ 

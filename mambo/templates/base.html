@@ -70,6 +70,11 @@
 		<!-- pie encabezado -->
 			<div class="container-fluid GCfoot-container">
 				<div class="container">
+					 	<ul class="nav GCnav pull-right">
+						{% if user.is_authenticated %}
+							  <li><a href="/publica/">Publica tu viaje</a></li>
+						{% endif %}
+						</ul>				
 				</div>
 			</div>
 			
