@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
 encoding//mambo/account/models.py=utf-8
-encoding//mambo/form/codeForm.py=cp1252
+encoding//mambo/form/codeForm.py=utf-8
 encoding//mambo/views.py=utf-8

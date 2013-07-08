@@ -1,26 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}	
-			<header>
+	<header>
+
 				<h1> Publica </h1>
-			</header>
-	<div class="trip-search-form search-form search-container">
-       <form id="search-form" class="form-inline" action="/search-post" method="POST">
-        <input type="text" id="simple_search_from_name" name="simple_search[from][name]"    placeholder="De" class="search-from geo-autocomplete" tabindex="1" /><input type="hidden" id="simple_search_from_coordinates_latitude" name="simple_search[from][coordinates][latitude]" /><input type="hidden" id="simple_search_from_coordinates_longitude" name="simple_search[from][coordinates][longitude]" /><input type="hidden" id="simple_search_from_countryCode" name="simple_search[from][countryCode]" />
 
-        <button tabindex="5" type="button" class="btn reverse tip" title="Invertir Salida y Destino">
-            <img src="/images/icons/reverse2.png" width="18" height="16" alt="Invertir">
-        </button>
-
-        <input type="text" id="simple_search_to_name" name="simple_search[to][name]"    placeholder="A" class="search-to geo-autocomplete" tabindex="2" /><input type="hidden" id="simple_search_to_coordinates_latitude" name="simple_search[to][coordinates][latitude]" /><input type="hidden" id="simple_search_to_coordinates_longitude" name="simple_search[to][coordinates][longitude]" /><input type="hidden" id="simple_search_to_countryCode" name="simple_search[to][countryCode]" />
-
-                    <input type="text" id="simple_search_dateBegin" name="simple_search[dateBegin]"    placeholder="Fecha" class="search-date date-picker" tabindex="3" />
-        
-        <input tabindex="4" type="submit" class="btn btn-large btn-primary" value="Buscar">
-    </form>
-	</div>
+	</header>
+	
 	<div class="well">
 		<form action="/actions/" method="post" class="form-search">
-			<input type="text" class="input-medium search-query">
+			{% for field in PublicaForm %}
+				
+					<div class="control-group {%if field.errors %} error {% endif %}">
+					
+							<div class="control-label">
+								{{ field.label_tag }}  
+							</div>
+				
+							<div class="controls">
+								{{ field }}
+								<span class="help-inline">
+									{% for error in field.errors %}
+										{{ error }} 
+									{% endfor %}
+								</span>
+							</div>
+						
+					</div>
+					
+					
+			{% endfor %}
+			<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+				<input class="span2" size="16" type="text" value="12-02-2012" readonly>
+				<span class="add-on"><i class="icon-calendar"></i></span>
+			</div>
 			<button type="submit" class="btn">Search</button>			
 		</form>
 	</div>

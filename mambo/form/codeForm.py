@@ -1,14 +1,42 @@
-# -*- coding: cp1252 -*-
+#encoding:utf-8
 from django import forms
+from django.contrib.admin import widgets 
 
 GENERE_CHOICES = (
          ('hombre','Hombre'),
          ('mujer','Mujer'),
-        )
+    )
+
 TIPDOC_CHOICES = (
         ('NIF', 'NIF'),
         ('NIE', 'NIE'),
         ('passp', 'Pasaporte'),
+    )
+
+CITY_CHOICES = (
+        ('leganes', 'CD Leganés'),
+        ('Real Oviedo','Real Oviedo'),
+        ('Mieres', 'Caudal Mieres'),
+        ('Rmadrid', 'Real Madrid "C"'),
+        ('Fuenlabrada', 'CF Fuenlabrada'),
+        ('AtlMadrid', 'Atl Madrid "B"'),
+        ('Salamanca', 'UD Salamanca'),
+        ('Coruxo', 'Coruxo CF'),
+        ('Getafe', 'Getafe CF "B"'),
+        ('Luanco' , 'Marino Luanco'),
+        ('Ourense', 'CD Ourense'),
+        ('Aldeona', 'Sp. Gijón B'),
+        ('Aviles', 'Real Avilés CF'),
+        ('Guijuelo', 'CD Guijuelo'),
+        ('Zamora', 'Zamora CF'),
+        ('Sanse', 'UD S.Sebastián'),
+        ('Alcala', 'RSD Alcalá'),
+        ('Vallecas', 'Rayo Vallecano B'),
+        ('Ferrol', 'Racing club de Ferrol'),
+        ('Vigo', 'RC Celta de Vigo "B"'),
+        ('Santiago', 'SD Compostela'),
+        ('Leon', 'CyD Leonesa'),
+        ('PBMadrid', 'Puerta Bonita'),
     )
 
 #Errores por defector para los formularios
@@ -55,4 +83,23 @@ class RegisterForm(forms.Form):
         #------ Apellidos --------#
         email = forms.EmailField(               required=True, widget=forms.TextInput(attrs={'class':'input-xlarge','placeholder':'Email'}),
                                                 label = "E-mail : ", error_messages=my_default_errors)
+
+class PublicaForm(forms.Form):
+        salida = forms.ChoiceField (            widget=forms.Select(attrs={'class':'input-xlarge'}),
+                                                choices=CITY_CHOICES, label = "De : ",  error_messages=my_default_errors )
+        
+        llegada = forms.ChoiceField (           widget=forms.Select(attrs={'class':'input-xlarge'}),
+                                                choices=CITY_CHOICES, label = "A : ",  error_messages=my_default_errors )
+        
+        fecha = forms.DateField (               widget=widgets.AdminDateWidget(attrs={'class':'input-xlarge'}))
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
         

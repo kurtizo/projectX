@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
 from account.models import UserProfile
-from form.codeForm import LoginForm, RegisterForm
+from form.codeForm import LoginForm, RegisterForm, PublicaForm
 
 
 #Página principal
@@ -86,6 +86,4 @@ def perfil_view(request):
 
 #Vista de publicador
 def publica_view(request):
-        return render_to_response('publica.html',  RequestContext(request))
-
- 
+        return render_to_response('publica.html',  {'PublicaForm': PublicaForm} ,RequestContext(request))
