@@ -87,3 +87,7 @@ def perfil_view(request):
 #Vista de publicador
 def publica_view(request):
         return render_to_response('publica.html',  {'PublicaForm': PublicaForm} ,RequestContext(request))
+
+def pagina_view(request):
+        return render_to_response('pagina.html')
+    

@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include
 from django.contrib import admin
-from mambo.views import index_view, login_view, logout_view, search_view, contact_view, register_view, perfil_view, publica_view
+from mambo.views import index_view, login_view, logout_view, search_view, contact_view, register_view, perfil_view, publica_view, pagina_view
 
 
 urlpatterns = patterns  ('', 
@@ -13,5 +13,6 @@ urlpatterns = patterns  ('',
                            ('^register/$',register_view),
                            ('^perfil/$',perfil_view),
                            ('^publica/$',publica_view),
+                           ('^pagina/$',pagina_view),
                            ('^admin/', include(admin.site.urls)),
                            )
