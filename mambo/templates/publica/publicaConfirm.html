@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}	
+	<header>
+				<h1> Publica tus .. </h1>
+	</header>
+	<hr>			
+	<form action="/publica/" method="post" class="form-horizontal">{% csrf_token %}
+		<button type="submit" class="btn">Cancelar</button>
+		<button type="submit" class="btn">Confirmar</button>
+	</form>
+	
+{% endblock %}	

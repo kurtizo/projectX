@@ -86,14 +86,17 @@ class RegisterForm(forms.Form):
 
 class PublicaForm(forms.Form):
         salida = forms.ChoiceField (            widget=forms.Select(attrs={'class':'input-xlarge'}),
-                                                choices=CITY_CHOICES, label = "De : ",  error_messages=my_default_errors )
+                                                choices=CITY_CHOICES, label = "Desde : ",  error_messages=my_default_errors )
         
-        llegada = forms.ChoiceField (           widget=forms.Select(attrs={'class':'input-xlarge'}),
-                                                choices=CITY_CHOICES, label = "A : ",  error_messages=my_default_errors )
+        destino = forms.ChoiceField (           widget=forms.Select(attrs={'class':'input-xlarge'}),
+                                                choices=CITY_CHOICES, label = "Hasta : ",  error_messages=my_default_errors )
         
-        fecha = forms.DateField (               widget=widgets.AdminDateWidget(attrs={'class':'input-xlarge'}))
+        fechasal = forms.DateField (            widget=forms.TextInput(attrs={'class':'input-xlarge','data-format':'MM/dd/yyyy HH:mm:ss PP'}), 
+                                                label = "Fecha salida : ",  error_messages=my_default_errors)
+        
+        fecharet = forms.DateField (            widget=forms.TextInput(attrs={'class':'input-xlarge','data-format':'MM/dd/yyyy HH:mm:ss PP'}), 
+                                                label = "Fecha llegada : ", error_messages=my_default_errors)
                 
-        
         
         
         

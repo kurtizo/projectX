@@ -86,7 +86,22 @@ def perfil_view(request):
 
 #Vista de publicador
 def publica_view(request):
-        return render_to_response('publica.html',  {'PublicaForm': PublicaForm} ,RequestContext(request))
+        print "publica_view"
+        if request.method == 'POST':
+            print "vamos al validate"
+            form = PublicaForm(request.POST)
+            if form.is_valid():
+                Csalida     = form.cleaned_data['salida']
+                Cdestino    = form.cleaned_data['destino']
+                Tsalida     = form.cleaned_data['fechasal']
+                Tdestino    = form.cleaned_data['fecharet']
+                print Csalida
+                print Cdestino
+                print Tsalida
+                print Tdestino
+        else:
+            print 'b'
+        return render_to_response('publica/publica.html',  {'PublicaForm': PublicaForm} ,RequestContext(request))
 
 def pagina_view(request):
         return render_to_response('pagina.html')
