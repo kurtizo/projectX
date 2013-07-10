@@ -5,35 +5,9 @@
 	</header>
 	<hr>			
 	<form action="/publica/" method="post" class="form-horizontal">{% csrf_token %}
+		{% block publica %}	
 		
-		{% for field in PublicaForm %}
-			
-			<div class="control-group {%if field.errors %} error {% endif %}">
-			
-					<div class="control-label">
-						{{ field.label_tag }}  
-					</div>
-					<div class="controls">
-						{% if field.name = 'fechasal' or field.name = 'fecharet' %}
-							<div id='{{ field.name }}' class="input-append">
-								{{ field }}
-								<span class="add-on">
-	      							<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-	    						</span>
-							</div>
-						{% else %}
-								{{ field }}
-						{% endif %}
-							<span class="help-inline">
-								{% for error in field.errors %}
-									{{ error }} 
-								{% endfor %}
-							</span>
-					</div>
-			</div>
-				
-		{% endfor %}
-
+		{% endblock %}		
 		<button type="submit" class="btn">Search</button>
 	</form>
 	
