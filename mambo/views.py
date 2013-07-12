@@ -90,18 +90,22 @@ def perfil_view(request):
 ###########################################################################################################################
 
 def publica_view(request):
-        print "publica_view"
         if request.method == 'POST':
             print "vamos al validate"
             form = PublicaForm(request.POST)
-            if form.is_valid():
-                print request.user
-                Csalida     = form.cleaned_data['salida']
-                Cdestino    = form.cleaned_data['destino']
-                Tsalida     = form.cleaned_data['fechasal']
-                Tdestino    = form.cleaned_data['fecharet']
-                plazas      = form.cleaned_data['plazas']      
-                data = transport.objects.create(uuid_id=request.user.uuid,salida=Csalida, llegada=Cdestino, fechasal=Tsalida, fecharet=Tdestino, plazas = plazas)
+            if form.is_valid() or request.validacion =='OK':
+                print request.data
+                if request.data.validacion =='OK':
+                    r = request.data
+                    data = transport.objects.create(uuid_id=request.user.uuid,salida=r.salida, llegada=r.llegada, fechasal=r.fechasal, fecharet=r.fecharet, plazas = r.plazas)
+                else:
+                    Csalida     = form.cleaned_data['salida']
+                    Cdestino    = form.cleaned_data['destino']
+                    Tsalida     = form.cleaned_data['fechasal']
+                    Tdestino    = form.cleaned_data['fecharet']
+                    plazas      = form.cleaned_data['plazas']
+                    validacion  = 'OK'
+                    data = {'salida':Csalida, 'llegada':Cdestino, 'fechasal':Tsalida, 'fecharet':Tdestino, 'plazas':plazas, 'validacion':validacion}      
                 return render_to_response('publica/publicaConfirm.html',  {'data': data} ,RequestContext(request))
             else:
                 print form.cleaned_data
