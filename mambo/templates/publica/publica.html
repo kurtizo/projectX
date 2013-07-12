@@ -6,23 +6,18 @@
 	<hr>			
 	<form action="/publica/" method="post" class="form-horizontal">{% csrf_token %}
 		{% block publica %}	
-		
 		{% endblock %}		
-		<button type="submit" class="btn">Search</button>
 	</form>
-	
 <!-- Observaciones para mejorar el script de calendarios
 	 http://tarruda.github.io/bootstrap-datetimepicker/ -->		
 	<script>
 		$(document).ready(function(){
 			window.prettyPrint && prettyPrint();
 			$('#fechasal').datetimepicker({
-		      language: 'en',
-		      pick12HourFormat: true      		
+		      language: 'pt-BR'
 		    });
 			$('#fecharet').datetimepicker({
-		      language: 'en',
-		      pick12HourFormat: true
+		      language: 'pt-BR'
           	});
 		});
 	</script>

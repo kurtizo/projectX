@@ -91,12 +91,15 @@ class PublicaForm(forms.Form):
         destino = forms.ChoiceField (           widget=forms.Select(attrs={'class':'input-xlarge'}),
                                                 choices=CITY_CHOICES, label = "Hasta : ",  error_messages=my_default_errors )
         
-        fechasal = forms.DateField (            widget=forms.TextInput(attrs={'class':'input-xlarge','data-format':'MM/dd/yyyy HH:mm:ss PP'}), 
+        fechasal = forms.DateTimeField (        widget=forms.TextInput(attrs={'class':'input-xlarge','data-format':'yyyy-MM-dd hh:mm:ss'}), 
                                                 label = "Fecha salida : ",  error_messages=my_default_errors)
         
-        fecharet = forms.DateField (            widget=forms.TextInput(attrs={'class':'input-xlarge','data-format':'MM/dd/yyyy HH:mm:ss PP'}), 
+        fecharet = forms.DateTimeField (        widget=forms.TextInput(attrs={'class':'input-xlarge','data-format':'yyyy-MM-dd hh:mm:ss'}), 
                                                 label = "Fecha llegada : ", error_messages=my_default_errors)
-                
+        
+        plazas = forms.IntegerField (           widget=forms.TextInput(attrs={'class':'input-xlarge'}),
+                                                label = "Plazas ofertadas : ", error_messages=my_default_errors,
+                                                max_value = 100, min_value = 1)        
         
         
         

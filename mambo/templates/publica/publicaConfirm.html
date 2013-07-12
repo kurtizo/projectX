@@ -1,12 +1,23 @@
-{% extends 'base.html' %}
-{% block content %}	
-	<header>
-				<h1> Publica tus .. </h1>
-	</header>
-	<hr>			
-	<form action="/publica/" method="post" class="form-horizontal">{% csrf_token %}
+{% extends 'publica/publica.html' %}
+{% block publica %}	
+		<ul>				
+				<li>
+					Lugar de salida: {{ data.salida }}
+				</li>
+				<li>
+					Destino: {{ data.llegada }}
+				</li>
+				<li>
+					Fecha y horario de salida : {{ data.fechasal }}
+				</li>
+				<li>
+					Fecha y horario de retorno : {{ data.fecharet }}
+				</li>
+				<li>
+					Plazas ofertadas: {{data.plazas}}
+				</li>
+		</ul>
+
 		<button type="submit" class="btn">Cancelar</button>
 		<button type="submit" class="btn">Confirmar</button>
-	</form>
-	
 {% endblock %}	

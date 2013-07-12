@@ -1,4 +1,4 @@
-{% extends 'publica.html' %}
+{% extends 'publica/publica.html' %}
 {% block publica %}	
 		{% for field in PublicaForm %}
 			
@@ -9,7 +9,7 @@
 					</div>
 					<div class="controls">
 						{% if field.name = 'fechasal' or field.name = 'fecharet' %}
-							<div id='{{ field.name }}' class="input-append">
+							<div id='{{ field.name }}' class="input-append date">
 								{{ field }}
 								<span class="add-on">
 	      							<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
@@ -25,6 +25,7 @@
 							</span>
 					</div>
 			</div>
-				
+	
 		{% endfor %}
+		<button type="submit" class="btn">Confirmar</button>
 {% endblock %}	

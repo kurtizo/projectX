@@ -87,8 +87,8 @@ class transport(models.Model):
         uuid        = models.ForeignKey(settings.AUTH_USER_MODEL)
         salida      = models.CharField(max_length=100)
         llegada     = models.CharField(max_length=100)
-        fecha       = models.DateField(("Date"))
-        horario     = models.DateField(("Hora"))
+        fechasal    = models.CharField(max_length=100)
+        fecharet    = models.CharField(max_length=100)
         plazas      = models.IntegerField(max_length=2)
     
         def __unicode__(self):

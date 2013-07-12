@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.models import User
 from django.shortcuts import render_to_response
-from account.models import UserProfile
+from account.models import UserProfile, transport
 from form.codeForm import LoginForm, RegisterForm, PublicaForm
 
 
@@ -84,25 +84,37 @@ def contact_view(request):
 def perfil_view(request):
         return render_to_response('perfil.html',  RequestContext(request))
 
-#Vista de publicador
+###########################################################################################################################
+#                        Vista de publicador                                                                              #
+#                        Se basa en un formulario multi-step                                                              #
+###########################################################################################################################
+
 def publica_view(request):
         print "publica_view"
         if request.method == 'POST':
             print "vamos al validate"
             form = PublicaForm(request.POST)
             if form.is_valid():
+                print request.user
                 Csalida     = form.cleaned_data['salida']
                 Cdestino    = form.cleaned_data['destino']
                 Tsalida     = form.cleaned_data['fechasal']
                 Tdestino    = form.cleaned_data['fecharet']
-                print Csalida
-                print Cdestino
-                print Tsalida
-                print Tdestino
+                plazas      = form.cleaned_data['plazas']      
+                data = transport.objects.create(uuid_id=request.user.uuid,salida=Csalida, llegada=Cdestino, fechasal=Tsalida, fecharet=Tdestino, plazas = plazas)
+                return render_to_response('publica/publicaConfirm.html',  {'data': data} ,RequestContext(request))
+            else:
+                print form.cleaned_data
+                print "Error : " + str(form.errors)
         else:
             print 'b'
-        return render_to_response('publica/publica.html',  {'PublicaForm': PublicaForm} ,RequestContext(request))
+        return render_to_response('publica/publicaForm.html',  {'PublicaForm': PublicaForm} ,RequestContext(request))
 
+####################################################################################################################################################################
+####################################################################################################################################################################
+
+
+#Página de pruebas
 def pagina_view(request):
         return render_to_response('pagina.html')
     
