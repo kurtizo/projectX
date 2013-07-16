@@ -60,11 +60,6 @@ def register_view(request):
                         nacimiento      = formRegister.cleaned_data['nacimiento']
                         #Se crea el usuario
                         User.objects.create_user(user, password, genero, nombre, apellidos, tipoDoc, numeroDoc, nacimiento, email)
-                        #Se crea el perfil del usuario
-                        # UserProfile.objects.create(genero=genero, nombre=nombre, apellidos=apellidos,
-                        #                            tipoDoc=tipoDoc, numeroDoc=numeroDoc, user=user,
-                        #                            email=email )
-                        
                         return render_to_response('principal.html', RequestContext(request))
                         
         else:
@@ -93,11 +88,12 @@ def publica_view(request):
         if request.method == 'POST':
             form = PublicaForm(request.POST)
             print request.POST
-            if 'data' in request.session:
-                    print "Estoy entrando por el data"
-                    print request.POST.data
-                    r = request.POST.data
-                    #data = transport.objects.create(uuid_id=request.user.uuid,salida=r.salida, llegada=r.llegada, fechasal=r.fechasal, fecharet=r.fecharet, plazas = r.plazas)
+            if 'data' in request.session and request.session['data'] != None:
+                    r = request.session['data']
+                    data = transport.objects.create(uuid_id=request.user.uuid,salida=r['salida'], 
+                                                    llegada=r['llegada'], fechasal=r['fechasal'], 
+                                                    fecharet=r['fecharet'], plazas = r['plazas'])
+                    del request.session['data']
             else:
                 print "No abemus data"
                 if form.is_valid():
