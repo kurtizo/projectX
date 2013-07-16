@@ -69,7 +69,7 @@ def register_view(request):
  
 #Vista de búsqueda
 def search_view(request):
-        return render_to_response('search_form.html',  RequestContext(request))
+        return render_to_response('search/search_form.html',  RequestContext(request))
 
 #Vista de contacto
 def contact_view(request):

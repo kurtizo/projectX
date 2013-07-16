@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}		
+	<div class="trip-search-form search-form search-container">
+    <h2>
+        Buscador 
+    </h2>
+		<div class="well">
+			<form action="/search/" method="post" class="form-search">
+				<input type="text" class="input-medium search-query">
+				<button type="submit" class="btn">Search</button>			
+			</form>
+		</div>
+	</div>
+{% endblock %}		
+<p>Dear {{ person_name }}</p>

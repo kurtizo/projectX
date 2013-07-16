@@ -82,7 +82,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         def __unicode__(self):
             return self.user
     
-
+# Habrá que agregarle un TIMESTAMP
 class transport(models.Model):
         uuid        = models.ForeignKey(settings.AUTH_USER_MODEL)
         salida      = models.CharField(max_length=100)
